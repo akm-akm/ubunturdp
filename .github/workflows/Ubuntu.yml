@@ -16,7 +16,7 @@ jobs:
     steps:
     - name: Creating User to Login
       run: |
-         sudo useradd -m Area69Lab && sudo adduser Area69Lab sudo && echo 'Area69Lab:Area69Lab' | sudo chpasswd
+         sudo useradd -m Ady && sudo adduser Ady sudo && echo 'Ady:Ady' | sudo chpasswd
      
       # To Install different Environment replace their commands. by default it Install 'Ubuntu'
       
@@ -46,7 +46,10 @@ jobs:
       # sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
 
     - name: Installing Desktop Environment (wait for 10 min)
-      run: sudo apt update && sudo add-apt-repository ppa:ubuntudde-dev/stable -y && sudo apt install ubuntudde-dde
+      run: | 
+            sudo apt update && sudo apt install xfce4 && sudo chmod 777 /home/Area69Lab/
+            sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
+      
     - name: Installing Google Chrome Headless
       run: |
            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
